@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.min.css">
+    <title>Ricochet Game</title>
+</head>
+
+<body>
+    <main id="main" class="main">
+        <div class="container">
+            <div class="game">
+  <div class="game__screen">
+    <span class="game__screen-text">Ricochet game</span>
+    <div class="game__display">
+      <canvas id="canvas" width="400" height="400"></canvas>
+      <img class="game__display-background" src="./img/background.png" aria-hidden="true" alt="space">
+    </div>
+  </div>
+  <div class="game__info">
+    <div class="game__strike">
+      <p class="game__strike-text">Shots: <span class="game__strike-icon js-strike-icon"></span></p>
+    </div>
+    <div class="game__touches">
+      <p class="game__touches-text">Max-touches: <span class="game__touches-count js-touches-count"></span></p>
+    </div>
+  </div>
+  <div class="game__control">
+    <div class="control js-control">
+    <div class="control__column">
+        <div class="control__select">
+            <label for="levels_select">Choose level</label>
+            <select name="levels" id="levels_select" class="js-level-select">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+        </div>
+
+        <span class="decor"></span>
+    </div>
+    <div class="control__column">
+        <div class="control__fire">
+            <button class="control__button js-fire-button"></button>
+            <span class="control__description">fire</span>
+        </div>
+    </div>
+    <div class="control__column">
+        <div class="control__up">
+            <button class="control__button js-up-button"></button>
+            <span class="control__description">up</span>
+        </div>
+        <div class="control__down">
+            <button class="control__button js-down-button"></button>
+            <span class="control__description">down</span>
+        </div>
+    </div>
+    <div class="control__column">
+        <div class="control__restart">
+            <button class="control__button js-restart-button"></button>
+            <span class="control__description">Restart</span>
+        </div>
+    </div>
+</div>
+
+  </div>
+</div>
+
+        </div>
+    </main>
+    <script src="./js/script.min.js"></script>
+</body>
+
+</html>

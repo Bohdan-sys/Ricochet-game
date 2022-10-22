@@ -1,0 +1,13 @@
+@import './base/nullstyle.scss', './base/colors.scss', './base/fonts.scss', './base/mixins.scss','./base/media/index.sass',
+'./base/container.scss', './base/animations.scss', './components/control.scss', './components/game.scss';
+
+body {
+    background-color: #e1e1ea;
+    font-family: 'Nunito', Helvetica, sans-serif;
+    font-size: 14px;
+
+    h1 {
+        font-size: 5rem;
+        font-weight: bold;
+    }
+}

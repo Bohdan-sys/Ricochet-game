@@ -1,0 +1,115 @@
+.game {
+  align-items: center;
+  box-shadow: $color-grey-2 0 0 12px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 640px;
+  background: linear-gradient($color-grey-1, rgb(239, 239, 239) 50%, $color-grey-2);
+  border-radius: 12px 12px 80px;
+  margin: 0 auto;
+  padding: 40px 40px 60px;
+
+  &__screen {
+    @include size(100%);
+    background-color: $color-grey-3;
+    position: relative;
+    text-align: end;
+    z-index: 2;
+    border: 6px inset $color-grey-2;
+    border-image: initial;
+    border-radius: 8px 8px 40px;
+    padding: 14px 66px 40px;
+
+    &::before {
+      @include absolute(18px, null, null, 50%);
+      @include size(calc(100% - 40px), 10px);
+      content: "";
+      transform: translateX(-50%);
+      border-bottom: 2px solid $color-blue;
+      border-top: 2px solid $color-red;
+    }
+
+    &::after {
+      @include absolute(50%, null, null, 30px);
+      @include size(12px);
+      background-color: $color-green;
+      content: "";
+      animation: 2s ease-in-out infinite melt;
+      border: 2px inset $color-grey-2;
+      border-radius: 6px;
+    }
+  }
+
+  &__screen-text {
+    background-color: $color-grey-3;
+    color: $color-grey-2;
+    font-size: 1.6rem;
+    position: relative;
+    padding: 6px 12px;
+  }
+
+  &__display {
+    @include size(412px);
+    position: relative;
+    border: 6px inset $color-grey-3;
+    margin: 8px auto 0;
+    overflow: hidden;
+  }
+
+  &__display-background {
+    @include absolute(0, 0);
+    @include size(100%);
+    animation: 180s linear infinite zoom;
+    z-index: -1;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 12px 0;
+  }
+
+  &__strike {
+    width: 50%;
+  }
+
+  &__strike-text,
+  &__touches-text {
+    color: $color-blue;
+    font-weight: bold;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+  }
+
+  &__touches {
+    width: 30%;
+  }
+
+  &__control {
+    position: relative;
+
+    &::before {
+      @include absolute(null, 0, 0, null);
+      @include size(80px, 40px);
+      content: "";
+      transform: rotate(-45deg);
+      animation: 3s ease-in-out infinite pulse;
+      border-left: 20px double $color-black;
+      border-right: 20px double $color-black;
+      border-radius: 2px;
+      outline: $color-grey-2 inset 4px;
+    }
+
+    &::after {
+      @include absolute(null, 22px, 3px, null);
+      @include size(30px, 40px);
+      content: "";
+      transform: rotate(-45deg);
+      animation: 3s ease-in-out infinite pulse;
+      border-left: 20px double $color-black;
+      border-radius: 2px;
+    }
+  }
+}

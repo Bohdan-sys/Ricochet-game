@@ -1,0 +1,137 @@
+@use 'sass:math';
+
+@mixin on-event {
+  &:hover,
+  &:focus {
+    @content;
+  }
+}
+
+@mixin size($width, $height: $width) {
+  height: $height;
+  width: $width;
+}
+
+@mixin max-size($width, $height: $width) {
+  max-height: $height;
+  max-width: $width;
+}
+
+@mixin min-size($width, $height: $width) {
+  min-height: $height;
+  min-width: $width;
+}
+
+// Set transition for element with settings
+@mixin trs($prop: all, $duration: 250ms, $easing: ease-in-out, $delay: 0ms) {
+  transition: $prop $duration $easing $delay;
+}
+
+// Use this for creating scalable elements (usually images / background images) that maintain a ratio.
+@mixin responsive-ratio($x, $y, $pseudo) {
+  $padding: unquote(math.div($y, $x) * 100 + "%");
+
+  @if $pseudo == "before" {
+    &::before {
+      content: "";
+      display: block;
+      padding-top: $padding;
+      width: 100%;
+    }
+  }
+
+  @else if $pseudo == "after" {
+    &::after {
+      content: "";
+      display: block;
+      padding-top: $padding;
+      width: 100%;
+    }
+  }
+
+  @else {
+    padding-top: $padding;
+  }
+}
+
+
+// Set absolute position with settings
+@mixin absolute($params...) {
+  position: absolute;
+
+  @if length($params) > 0 {
+    $params: if(length($params) == 1, nth($params, 1), $params);
+    $props: (top, right, bottom, left);
+
+    @for $index from 1 through length($params) {
+      #{nth($props, $index)}: nth($params, $index);
+    }
+  }
+}
+
+// Set fixed position with settings
+@mixin fixed($params...) {
+  position: fixed;
+
+  @if length($params) > 0 {
+    $params: if(length($params) == 1, nth($params, 1), $params);
+    $props: (top, right, bottom, left);
+
+    @for $index from 1 through length($params) {
+      #{nth($props, $index)}: nth($params, $index);
+    }
+  }
+}
+
+// Set relative position with settings
+@mixin relative($params...) {
+  position: relative;
+
+  @if length($params) > 0 {
+    $params: if(length($params) == 1, nth($params, 1), $params);
+    $props: (top, right, bottom, left);
+
+    @for $index from 1 through length($params) {
+      #{nth($props, $index)}: nth($params, $index);
+    }
+  }
+}
+
+// Reset position to static
+@mixin reset-position {
+  bottom: auto;
+  left: auto;
+  position: static;
+  right: auto;
+  top: auto;
+}
+
+// Center element inside block (absolute position)
+@mixin abs-center {
+  @include absolute(50%, null, null, 50%);
+  transform: translate(-50%, -50%);
+}
+
+// Center block horizontally
+@mixin center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Create cover block
+@mixin coverer {
+  @include size(100%);
+  @include absolute(0, null, null, 0);
+}
+
+@mixin font($params...) {
+  @if length($params) > 0 {
+    $params: if(length($params) == 1, nth($params, 1), $params);
+    $props: (font-family, font-size, font-weight, font-style);
+
+    @for $index from 1 through length($params) {
+      #{nth($props, $index)}: nth($params, $index);
+    }
+  }
+}
